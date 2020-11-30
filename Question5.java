@@ -12,12 +12,11 @@ public class Question5 {
 
     public static void main(String args[]) {
 
-        // NÃO ESTÁ FUNCIONANDO!!
 
         // logger
         Logger.getLogger("org").setLevel(Level.ERROR);
         // habilita o uso de n threads
-        SparkConf conf = new SparkConf().setAppName("transactionsInvolvingBrazil").setMaster("local[1]");
+        SparkConf conf = new SparkConf().setAppName("avgBrazil").setMaster("local[1]");
         // cria o contexto da aplicacao
         JavaSparkContext sc = new JavaSparkContext(conf);
 
@@ -48,7 +47,7 @@ public class Question5 {
 
         // somando os valores e instanciando a classe de media
         JavaPairRDD<String, AvgPrice> soma = prdd.reduceByKey((x, y) ->
-                new AvgPrice(x.getN() + y.getN(), x.getPreco() + y.getN()));
+                new AvgPrice(x.getN() + y.getN(), x.getPreco() + y.getPreco()));
 
         // print dos resultados parciais
         soma.foreach(v -> System.out.println(v._1() + "\t" + v._2()));

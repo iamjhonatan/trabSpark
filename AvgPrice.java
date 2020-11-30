@@ -1,6 +1,8 @@
 package pairrdd.tdeSpark;
 
-public class AvgPrice {
+import java.io.Serializable;
+
+public class AvgPrice implements Serializable {
 
     private int n;
     private double preco;
